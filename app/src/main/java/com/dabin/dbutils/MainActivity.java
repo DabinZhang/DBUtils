@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ToastUtils.showShortToast(MainActivity.this, System.currentTimeMillis()+"!!!!!!!");
-                System.out.println("输出啊。。。。。。。。。。。。。。。。");
+                System.out.println("putout。。。。。。。。。。。。。。。。");
             }
         });
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         //text
 
         new BaseDialog(MainActivity.this, BaseDialog.Location.BOTTOM)
-                .setTitleName("请输入密码")
+                .setTitleName("please enter your password")
                 .setNegativeButton(clickNegativeButton)
                 .setPositiveButton(clickPositiveButton)
                 .setLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
