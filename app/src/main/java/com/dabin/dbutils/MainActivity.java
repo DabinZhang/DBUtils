@@ -3,11 +3,14 @@ package com.dabin.dbutils;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.dabin.basedialog.BaseDialog;
+import com.dabin.utils.ToastUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,16 +19,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastUtils.showShortToast(MainActivity.this, System.currentTimeMillis()+"!!!!!!!");
+                System.out.println("输出啊。。。。。。。。。。。。。。。。");
+            }
+        });
+
         final View.OnClickListener clickNegativeButton = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "关关关关关关关关关", Toast.LENGTH_SHORT).show();
+                ToastUtils.showLongToast(MainActivity.this, System.currentTimeMillis()+"!!!!!!!");
             }
         };
         final View.OnClickListener clickPositiveButton = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "开开开开开开开开", Toast.LENGTH_SHORT).show();
+                ToastUtils.showLongToast(MainActivity.this, System.currentTimeMillis()+"???????");
             }
         };
 
