@@ -24,13 +24,13 @@ import androidx.annotation.StringRes;
  */
 public class BaseDialog extends Dialog {
 
-    private Context mContext;
+    protected Context mContext;
     private ViewGroup mRootView;
     private ViewGroup mLlOperate;
     private TextView mBtnNegative;
     private TextView mBtnPositive;
     private TextView mBtnNext;
-    private FrameLayout mFlContent;
+    protected FrameLayout mFlContent;
     private TextView mTvTitle;
     private boolean mDismDefBtn = false;
 
@@ -111,7 +111,17 @@ public class BaseDialog extends Dialog {
         return this.mRootView;
     }
 
-    public BaseDialog setView(View view, boolean dismDefBtn) {
+    public FrameLayout getMidView() {
+        return mFlContent;
+    }
+
+    /**
+     * 设置中间显示层
+     * @param view v
+     * @param dismDefBtn 按钮是否取消
+     * @return d
+     */
+    public BaseDialog setMidView(View view, boolean dismDefBtn) {
         if (view != null) {
             this.mDismDefBtn = dismDefBtn;
             this.mFlContent.setVisibility(View.VISIBLE);
@@ -119,8 +129,10 @@ public class BaseDialog extends Dialog {
         }
         return this;
     }
-
-    public BaseDialog setView(@LayoutRes int layoutResID, boolean dismDefBtn) {
+    /**
+     * 设置中间显示层
+     */
+    public BaseDialog setMidView(@LayoutRes int layoutResID, boolean dismDefBtn) {
         View view = View.inflate(this.mContext, layoutResID, null);
         if (view != null) {
             this.mDismDefBtn = dismDefBtn;
@@ -130,6 +142,11 @@ public class BaseDialog extends Dialog {
         return this;
     }
 
+    /**
+     * 设置根布局
+     * @param view v
+     * @return d
+     */
     public BaseDialog setRootView(ViewGroup view) {
         if (view != null) {
             this.mDismDefBtn = true;
@@ -139,6 +156,9 @@ public class BaseDialog extends Dialog {
         return this;
     }
 
+    /**
+     * 设置根布局
+     */
     public BaseDialog setRootView(@LayoutRes int layoutResID) {
         ViewGroup view = (ViewGroup) View.inflate(this.mContext, layoutResID, null);
         if (view != null) {
@@ -149,6 +169,12 @@ public class BaseDialog extends Dialog {
         return this;
     }
 
+    /**
+     * 设置 窗口的长宽
+     * @param width w
+     * @param height h
+     * @return dialog
+     */
     public BaseDialog setLayoutParams(int width, int height) {
         Window window = this.getWindow();
         if (window != null) {
@@ -157,6 +183,9 @@ public class BaseDialog extends Dialog {
         return this;
     }
 
+    /**
+     * 设置重心
+     */
     public BaseDialog setGravity(int gravity) {
         Window window = this.getWindow();
         if (window != null) {
@@ -165,11 +194,17 @@ public class BaseDialog extends Dialog {
         return this;
     }
 
+    /**
+     * 设置标题
+     */
     public BaseDialog setTitleName(@StringRes int stringResID) {
         this.setTitleName(this.mContext.getResources().getString(stringResID));
         return this;
     }
 
+    /**
+     * 设置标题
+     */
     public BaseDialog setTitleName(CharSequence title) {
         if (!TextUtils.isEmpty(title)) {
             this.mTvTitle.setVisibility(View.VISIBLE);
@@ -178,34 +213,55 @@ public class BaseDialog extends Dialog {
         return this;
     }
 
+    /**
+     * 获取标题
+     */
     public String getTitleName() {
         return this.mTvTitle.getText().toString();
     }
 
+    /**
+     * 设置标题大小
+     */
     public BaseDialog setTitleSize(float size) {
         this.mTvTitle.setTextSize(size);
         return this;
     }
 
+    /**
+     * 设置标题重心
+     */
     public BaseDialog setTitleGravity(int gravity) {
         this.mTvTitle.setGravity(gravity);
         return this;
     }
 
+    /**
+     * 设置取消按钮监听
+     */
     public BaseDialog setNegativeButton(View.OnClickListener onClickListener) {
         return this.setNegativeButton(R.string.cancel, onClickListener);
     }
 
+    /**
+     * 设置Negative按钮监听并命名
+     */
     public BaseDialog setNegativeButton(@StringRes int stringRes,
                                         View.OnClickListener onClickListener) {
         return this.setNegativeButton(this.mContext.getResources().getString(stringRes),
                 onClickListener);
     }
 
+    /**
+     * 设置Negative按钮监听并命名(灰色)
+     */
     public BaseDialog setNegativeButton(CharSequence str, View.OnClickListener onClickListener) {
         return this.setNegativeButton(str, Color.GRAY, onClickListener);
     }
 
+    /**
+     * 设置Negative按钮监听并命名
+     */
     public BaseDialog setNegativeButton(CharSequence str, @ColorInt int color,
                                         View.OnClickListener onClickListener) {
         if (this.mDismDefBtn) {
@@ -229,35 +285,47 @@ public class BaseDialog extends Dialog {
     public TextView getPositiveButton() {
         return this.mBtnPositive;
     }
+    public TextView getNextButton() {
+        return this.mBtnNext;
+    }
 
+    /**
+     * 确定按钮
+     */
     public BaseDialog setPositiveButton(View.OnClickListener onClickListener) {
         return this.setPositiveButton(R.string.enter, onClickListener);
     }
 
+    /**
+     * 确定按钮
+     */
     public BaseDialog setPositiveButton(@StringRes int stringRes,
                                         View.OnClickListener onClickListener) {
         return this.setPositiveButton(stringRes, onClickListener, false);
     }
 
+    /**
+     * 确定按钮
+     */
     public BaseDialog setPositiveButton(CharSequence str, View.OnClickListener onClickListener) {
         return this.setPositiveButton(str, onClickListener, false);
     }
 
     public BaseDialog setPositiveButton(@StringRes int stringRes,
                                         View.OnClickListener onClickListener
-            , boolean isNativeClick) {
+            , boolean useNativeListener) {
         return this.setPositiveButton(this.mContext.getResources().getString(stringRes),
-                onClickListener, isNativeClick);
+                onClickListener, useNativeListener);
     }
 
     public BaseDialog setPositiveButton(CharSequence str, View.OnClickListener onClickListener,
-                                        boolean isNativeClick) {
-        return this.setPositiveButton(str, Color.BLACK, onClickListener, isNativeClick);
+                                        boolean useNativeListener) {
+        return this.setPositiveButton(str, Color.BLACK, onClickListener, useNativeListener);
     }
 
     public BaseDialog setPositiveButton(CharSequence str, @ColorInt int color,
                                         View.OnClickListener onClickListener,
-                                        boolean isNativeClick) {
+                                        boolean useNativeListener) {
         if (this.mDismDefBtn) {
             throw new RuntimeException("Already there is no this button!");
         } else {
@@ -268,7 +336,7 @@ public class BaseDialog extends Dialog {
             this.mBtnPositive.setTextColor(color);
             this.mBtnPositive.setVisibility(View.VISIBLE);
             this.mLlOperate.setVisibility(View.VISIBLE);
-            if (isNativeClick) {
+            if (useNativeListener) {
                 if (onClickListener != null) {
                     this.mBtnPositive.setOnClickListener(onClickListener);
                 }
@@ -294,18 +362,18 @@ public class BaseDialog extends Dialog {
     }
 
     public BaseDialog setNextButton(@StringRes int stringRes, View.OnClickListener onClickListener,
-                                    boolean isNativeClick) {
+                                    boolean useNativeListener) {
         return this.setNextButton(this.getContext().getResources().getString(stringRes),
-                onClickListener, isNativeClick);
+                onClickListener, useNativeListener);
     }
 
     public BaseDialog setNextButton(CharSequence str, View.OnClickListener onClickListener,
-                                    boolean isNativeClick) {
-        return this.setNextButton(str, Color.BLACK, onClickListener, isNativeClick);
+                                    boolean useNativeListener) {
+        return this.setNextButton(str, Color.BLACK, onClickListener, useNativeListener);
     }
 
     public BaseDialog setNextButton(CharSequence str, @ColorInt int color,
-                                    View.OnClickListener onClickListener, boolean isNativeClick) {
+                                    View.OnClickListener onClickListener, boolean useNativeListener) {
         if (this.mDismDefBtn) {
             throw new RuntimeException("Already there is no this button!");
         } else {
@@ -316,7 +384,7 @@ public class BaseDialog extends Dialog {
             this.mBtnNext.setTextColor(color);
             this.mLlOperate.setVisibility(View.VISIBLE);
             this.mBtnNext.setVisibility(View.VISIBLE);
-            if (isNativeClick) {
+            if (useNativeListener) {
                 if (onClickListener != null) {
                     this.mBtnNext.setOnClickListener(onClickListener);
                 }
@@ -346,7 +414,6 @@ public class BaseDialog extends Dialog {
 
     public BaseDialog setAnim(BaseDialog.AnimType type) {
 
-
         switch (type) {
             case WARNING:
                 BaseDialog.AnimatorSetUtil.startWarningAnimatorSet(this.getRootView());
@@ -361,8 +428,6 @@ public class BaseDialog extends Dialog {
                 this.getWindow().setWindowAnimations(R.style.DialogBottom);
                 break;
         }
-
-
         return this;
     }
 
@@ -410,10 +475,16 @@ public class BaseDialog extends Dialog {
         }
     }
 
+    /**
+     * 动画类型
+     */
     public enum AnimType {
         WARNING, PROMPT, TOPDOWN, BOTTOMUP
     }
 
+    /**
+     * 窗口位置
+     */
     public enum Location {BOTTOM, CENTER, TOP}
 
     private class MyOnClickListener implements View.OnClickListener {
@@ -428,49 +499,7 @@ public class BaseDialog extends Dialog {
             if (this.onClickListener != null) {
                 this.onClickListener.onClick(view);
             }
-
         }
     }
-
-   /* viewById.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            new BaseDialog(MainActivity.this, BaseDialog.Location.TOP)
-                    .setTitleName("请输入密码")
-                    .setNegativeButton(clickNegativeButton)
-                    .setPositiveButton(clickPositiveButton)
-                    .setLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT)
-                    .setAnim(BaseDialog.AnimType.TOPDOWN)
-                    .show();
-        }
-    });
-        viewById1.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            new BaseDialog(MainActivity.this, BaseDialog.Location.CENTER)
-                    .setTitleName("请输入密码")
-                    .setNegativeButton(clickNegativeButton)
-                    .setPositiveButton(clickPositiveButton)
-                    .setLayoutParams((int) (getWindowManager().getDefaultDisplay().getWidth() * 0.9), ViewGroup.LayoutParams.WRAP_CONTENT)
-                    .setAnimatorSet(BaseDialog.AnimType.PROMPT)
-                    .show();
-        }
-    });
-
-        viewById2.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            new BaseDialog(MainActivity.this, BaseDialog.Location.BOTTOM)
-                    .setTitleName("请输入密码")
-                    .setNegativeButton(clickNegativeButton)
-                    .setPositiveButton(clickPositiveButton)
-                    .setLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT)
-                    .setAnim(BaseDialog.AnimType.BOTTOMUP)
-                    .show();
-        }
-    });*/
-
 
 }

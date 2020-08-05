@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DBUtils</string>
+    <string name="loading">下载进度: %1$s%%</string>
+
 </resources>
