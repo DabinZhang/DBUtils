@@ -70,6 +70,4 @@ public class TimeUtil {
         return res;
     }
 
-
-
 }
