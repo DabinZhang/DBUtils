@@ -10,9 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dabin.basedialog.BaseDialog;
 import com.dabin.basedialog.LoadDialog;
+import com.dabin.baseframe.BaseActivity;
 import com.dabin.utils.ToastUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

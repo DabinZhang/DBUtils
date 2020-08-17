@@ -3,13 +3,14 @@ apply plugin: 'com.android.application'
 dependencies {
     implementation project(':basedialog')
     implementation project(':utils')
+    implementation project(':baseframe')
 }
 
 android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.dabin.dbutils"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"

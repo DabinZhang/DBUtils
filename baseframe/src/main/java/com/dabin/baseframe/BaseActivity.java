@@ -19,13 +19,13 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
-    private void initEvent() {
+    protected void initEvent() {
     }
 
-    private void initDate() {
+    protected void initDate() {
     }
 
-    private void initView() {
+    protected void initView() {
     }
 
 
