@@ -1,1 +1,1 @@
-include ':app', ':basedialog', ':utils', ':baseframe'
+include ':app', ':basedialog', ':utils', ':baseframe', ':widget'

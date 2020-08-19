@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+         />
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:text="button"
@@ -30,21 +26,46 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/button"
-        app:layout_constraintBottom_toBottomOf="@id/button"
         android:layout_marginStart="40dp"
         android:text="top"
-        />
+       />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/button1"
-        app:layout_constraintBottom_toBottomOf="@id/button1"
         android:layout_marginStart="40dp"
         android:text="middel"
+         />
+
+
+    <com.dabin.widget.LoginEditText
+        android:id="@+id/ui_name"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        app:background="@drawable/shape_corners5_stroke"
+        app:inputType="password"
+        app:inputPassword="true"
+        app:maxLines="1"
+        app:textColor="@android:color/black"
+        app:textSize="15sp"
+        app:drawableLeft="@mipmap/ic_user_name"
         />
 
+    <com.dabin.widget.LoginEditText
+        android:id="@+id/ui_input_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:drawableLeft="@mipmap/ic_user_name"
+        app:background="@drawable/shape_corners5_stroke"
+        app:inputHint="清输入用户名"
+        app:inputHintSize="8sp"
+        app:inputType="text"
+        app:textColor="@android:color/black"
+        app:textColorHint="@color/colorAccent"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
