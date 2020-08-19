@@ -111,4 +111,13 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void setPresenter() {
+        mMyPresenter = new MyPresenter();
+    }
+
+    private class MyPresenter extends BaseActivity.BasePresenter {
+
+    }
+
 }

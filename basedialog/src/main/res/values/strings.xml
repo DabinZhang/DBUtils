@@ -1,4 +1,3 @@
 <resources>
-    <string name="app_name">BaseDialog</string>
     <string name="loading">Loading progress: %1$s%%</string>
 </resources>

@@ -9,12 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * Created by Dabin on 2020/8/11 0011.
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity <T extends BaseActivity.BasePresenter>extends AppCompatActivity {
 
     protected Activity mActivity;
+    protected T mMyPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setPresenter();
         super.onCreate(savedInstanceState);
         mActivity = this;
         initView();
@@ -32,7 +34,11 @@ public class BaseActivity extends AppCompatActivity {
     protected void initView() {
     }
 
+    public abstract void setPresenter();
 
+    public abstract class BasePresenter {
+
+    }
 
 }
 
