@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 /**
  * Created by Dabin on 2020/8/19 0019.
  */
-public abstract class BaseFragment <T extends BaseActivity.BasePresenter> extends Fragment implements View.OnClickListener {
+public abstract class BaseFragment <T extends BaseFragment.BasePresenter> extends Fragment implements View.OnClickListener {
 
     protected Activity mActivity;
     protected T mMyPresenter;
@@ -83,7 +83,7 @@ public abstract class BaseFragment <T extends BaseActivity.BasePresenter> extend
     @Override
     public void onDestroy() {
         super.onDestroy();
-        System.out.println("onDestroy-------------------!!!!"+getClass().getName());
+//        System.out.println("onDestroy-------------------!!!!"+getClass().getName());
     }
 
     @Override
@@ -111,4 +111,7 @@ public abstract class BaseFragment <T extends BaseActivity.BasePresenter> extend
 
     public abstract void setPresenter();
 
+    public abstract class BasePresenter {
+
+    }
 }

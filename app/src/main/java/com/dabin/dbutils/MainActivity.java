@@ -13,7 +13,7 @@ import com.dabin.basedialog.LoadDialog;
 import com.dabin.baseframe.BaseActivity;
 import com.dabin.utils.ToastUtils;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity <MainActivity.MyPresenter> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,10 +114,13 @@ public class MainActivity extends BaseActivity {
     @Override
     public void setPresenter() {
         mMyPresenter = new MyPresenter();
+        mMyPresenter.show();
     }
 
-    private class MyPresenter extends BaseActivity.BasePresenter {
-
+    class MyPresenter extends BaseActivity.BasePresenter {
+        void show() {
+            System.out.println("hhaha");
+        }
     }
 
 }
