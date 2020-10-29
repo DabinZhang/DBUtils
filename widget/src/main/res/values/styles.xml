@@ -6,4 +6,22 @@
         <!--<item name="android:textCursorDrawable">@drawable/text_cursor</item>-->
     </style>
 
+    <!--一个带文字、数值和单位的自定义View-->
+    <declare-styleable name="HorizontaliDataItem">
+        <attr name="titleText" format="string|reference" />
+        <attr name="valueText" format="string|reference" />
+        <attr name="unitText" format="string|reference" />
+        <attr name="titleColor" format="color" />
+        <attr name="valueColor" format="color" />
+        <attr name="unitColor" format="color" />
+        <attr name="titleSize" format="dimension" />
+        <attr name="valueSize" format="dimension" />
+        <attr name="unitSize" format="dimension" />
+        <attr name="divideLineEnable" format="boolean" />
+        <attr name="bottomLineEnable" format="boolean" />
+        <attr name="occupiedUnitEnable" format="boolean" />
+        <attr name="titleWeight" format="integer" />
+        <attr name="valueWeight" format="integer" />
+        <attr name="unitWeight" format="integer" />
+    </declare-styleable>
 </resources>
